@@ -46,12 +46,30 @@ jobs:
           KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
           KEYSTORE_STORE_PASSWORD: ${{ secrets.KEYSTORE_STORE_PASSWORD }}
 
-      # Build and deploy with Fastlane
+      # Setup Ruby
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+
+      # Install Bundler
+      - name: Install Bundler
+        run: gem install bundler
+
+      # Navigate to the app directory
+      - name: Change directory to app
+        run: cd app
+
+      # Install dependencies using Bundler
+      - name: Install dependencies
+        run: bundle install
+
+      # Run Fastlane
       - name: Run fastlane
         run: |
-            echo "$PLAY_STORE_CONFIG_JSON" > app/play_store_config.json
-            cd app
-            bundle install
-            bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
+          echo "$PLAY_STORE_CONFIG_JSON" > app/play_store_config.json
+          cd app
+          bundle install
+          bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
         env:
-            PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
+          PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}

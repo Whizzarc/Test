@@ -49,8 +49,9 @@ jobs:
       # Build and deploy with Fastlane
       - name: Run fastlane
         run: |
-          cd app
-          bundle install
-          bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
+            echo "$PLAY_STORE_CONFIG_JSON" > app/play_store_config.json
+            cd app
+            bundle install
+            bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
         env:
-          FASTLANE_JSON_KEY_FILE: fastlane/play_store_config.json
+            PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}

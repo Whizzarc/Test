@@ -64,12 +64,10 @@ jobs:
         run: gem install bundler
 
       # Navigate to the app directory
-      - name: Change directory to app
-        run: cd app
-
-      # Install dependencies using Bundler
-      - name: Install dependencies
-        run: bundle install
+      - name: Change directory to app and install dependencies
+        working-directory: ./app
+        run: |
+            bundle install
 
       # Run Fastlane
       - name: Run fastlane

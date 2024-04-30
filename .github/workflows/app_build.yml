@@ -46,10 +46,18 @@ jobs:
           KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
           KEYSTORE_STORE_PASSWORD: ${{ secrets.KEYSTORE_STORE_PASSWORD }}
 
-      # Setup Ruby
-      - uses: actions/setup-ruby@v1
+      - name: Install npm dependencies
+        run: |
+            yarn install
+
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+           ruby-version: '2.7'
+
+      # Setup Ruby
+#      - uses: actions/setup-ruby@v1
+#        with:
+#          ruby-version: '2.6'
 
       # Install Bundler
       - name: Install Bundler

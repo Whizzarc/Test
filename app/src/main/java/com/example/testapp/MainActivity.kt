@@ -2,6 +2,7 @@ package com.example.testapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.whizzarc.testapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

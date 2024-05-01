@@ -3,21 +3,21 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Internal Build to Play Store internal track"
   lane :internal do
-      gradle(
-        task: "assembleRelease",
-        properties: {
-          "android.injected.signing.store.file" => "upload-keystore.jks",
-          "android.injected.signing.store.password" => "whizzarc@31588",
-          "android.injected.signing.key.alias" => "primary",
-          "android.injected.signing.key.password" => "whizzarc@31588"
-        }
-      )
+    gradle(
+      task: "bundleRelease",
+      properties: {
+        "android.injected.signing.store.file" => "upload-keystore.jks",
+        "android.injected.signing.store.password" => "whizzarc@31588",
+        "android.injected.signing.key.alias" => "primary",
+        "android.injected.signing.key.password" => "whizzarc@31588"
+      }
+    )
 
     upload_to_play_store(
       track: "internal",
-      apk: "app/build/outputs/apk/release/app-release.apk",
+      aab: "app/build/outputs/bundle/release/app-release.aab",
       json_key_data: ENV['FASTLANE_JSON_KEY_FILE'],
-      package_name: "com.example.testapp"
+      package_name: "com.whizzarc.testapp"
     )
   end
 end

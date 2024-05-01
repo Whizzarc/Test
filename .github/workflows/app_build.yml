@@ -60,9 +60,9 @@ jobs:
 #        with:
 #          ruby-version: '2.6'
 
-#      # Install Bundler
-#      - name: Install Bundler
-#        run: gem install bundler
+      # Install Bundler
+      - name: Install Bundler
+        run: gem install bundler
 
 #      # Navigate to the app directory
 #      - name: Change directory to app and install dependencies

@@ -12,10 +12,10 @@ platform :android do
           "android.injected.signing.key.password" => "whizzarc@31588"
         }
       )
-
+    sh "pwd"
     upload_to_play_store(
       track: "internal",
-      aab: "app/build/outputs/apk/release/app-release.aab",
+      aab: "app/build/outputs/bundle/release/app-release.aab",
     )
   end
 end

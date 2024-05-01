@@ -3,20 +3,13 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Internal Build to Play Store internal track"
   lane :internal do
-  properties = File.read("app/key.properties").split("\n").map { |line| line.split("=") }.to_h
-
-      # Access the properties
-      key_alias = properties["keyAlias"]
-      store_password = properties["storePassword"]
-      key_password = properties["keyPassword"]
-
       gradle(
         task: "assembleRelease",
         properties: {
           "android.injected.signing.store.file" => "upload-keystore.jks",
-          "android.injected.signing.store.password" => store_password,
-          "android.injected.signing.key.alias" => key_alias,
-          "android.injected.signing.key.password" => key_password
+          "android.injected.signing.store.password" => "whizzarc@31588",
+          "android.injected.signing.key.alias" => "primary",
+          "android.injected.signing.key.password" => "whizzarc@31588"
         }
       )
 

@@ -2,19 +2,16 @@ default_platform(:android)
 
 platform :android do
   desc "Submit a new Internal Build to Play Store internal track"
-  lane :internal do |options|
-      keystore_file_path = options[:play_store_upload_key] || ENV["PLAY_STORE_UPLOAD_KEY"]
-      keystore_store_password = options[:keystore_store_password] || ENV["KEYSTORE_STORE_PASSWORD"]
-      keystore_key_alias = options[:keystore_key_alias] || ENV["KEYSTORE_KEY_ALIAS"]
-      keystore_key_password = options[:keystore_key_password] || ENV["KEYSTORE_KEY_PASSWORD"]
+  lane :internal do
+      keystore_file_path = ENV["PLAY_STORE_UPLOAD_KEY"] || raise("Keystore file path not found in secrets")
 
       gradle(
         task: "assembleRelease",
         properties: {
           "android.injected.signing.store.file" => keystore_file_path,
-          "android.injected.signing.store.password" => keystore_store_password,
-          "android.injected.signing.key.alias" => keystore_key_alias,
-          "android.injected.signing.key.password" => keystore_key_password
+          "android.injected.signing.store.password" => ENV["KEYSTORE_STORE_PASSWORD"],
+          "android.injected.signing.key.alias" => ENV["KEYSTORE_KEY_ALIAS"],
+          "android.injected.signing.key.password" => ENV["KEYSTORE_KEY_PASSWORD"]
         }
       )
 

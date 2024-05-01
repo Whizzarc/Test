@@ -12,9 +12,11 @@ platform :android do
           "android.injected.signing.key.password" => "whizzarc@31588"
         }
       )
-       sh "ls -la ../../Test/app/build/outputs/bundle/release"
-       sh "ls -la ../app/build/outputs/bundle/debug"
+       sh "ls -la ../app/build/outputs"
+       sh "ls -la ../app/build/outputs/apk"
+       sh "ls -la ../app/build/outputs/bundle"
        sh "ls -la pwd"
+       sh "pwd"
 
 
     upload_to_play_store(

@@ -15,7 +15,7 @@ platform :android do
 
     upload_to_play_store(
       track: "internal",
-      aab: "app/build/outputs/bundle/release/app-release.apk",
+      aab: "app/build/outputs/bundle/apk/app-release.aab",
     )
   end
 end

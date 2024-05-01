@@ -16,7 +16,8 @@ platform :android do
     upload_to_play_store(
       track: "internal",
       apk: "app/build/outputs/apk/release/app-release.apk",
-      json_key_data: ENV['FASTLANE_JSON_KEY_FILE']
+      json_key_data: ENV['FASTLANE_JSON_KEY_FILE'],
+      package_name: "com.example.testapp"
     )
   end
 end

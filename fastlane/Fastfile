@@ -3,8 +3,6 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Internal Build to Play Store internal track"
   lane :internal do
-      keystore_file_path = ENV["PLAY_STORE_UPLOAD_KEY"] || raise("Keystore file path not found in secrets")
-
       gradle(
         task: "assembleRelease",
         properties: {

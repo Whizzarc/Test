@@ -74,5 +74,5 @@ jobs:
           bundle install
           bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
         env:
-          FASTLANE_JSON_KEY_FILE: ${{ secrets.PLAY_STORE_CONFIG }}
+          FASTLANE_JSON_KEY_FILE: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
         working-directory: YOUR_APP_DIRECTORY/android

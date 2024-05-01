@@ -6,7 +6,7 @@ platform :android do
     gradle(
       task: "assembleRelease",
       properties: {
-        "android.injected.signing.store.file" => ENV["FASTLANE_JSON_KEY_FILE"],
+        "android.injected.signing.store.file" => ENV["PLAY_STORE_UPLOAD_KEY"],
         "android.injected.signing.store.password" => ENV["KEYSTORE_STORE_PASSWORD"],
         "android.injected.signing.key.alias" => ENV["KEYSTORE_KEY_ALIAS"],
         "android.injected.signing.key.password" => ENV["KEYSTORE_KEY_PASSWORD"]

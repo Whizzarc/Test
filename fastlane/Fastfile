@@ -12,7 +12,6 @@ platform :android do
           "android.injected.signing.key.password" => "whizzarc@31588"
         }
       )
-       sh "ls -la ../app/build/outputs/apk/release"
 
 
     upload_to_play_store(

@@ -12,7 +12,7 @@ platform :android do
           "android.injected.signing.key.password" => "whizzarc@31588"
         }
       )
-       sh "ls -la ../app/build/outputs/bundle/release"
+       sh "ls -la ../../Test/app/build/outputs/bundle/release"
        sh "ls -la ../app/build/outputs/bundle/debug"
        sh "ls -la pwd"
 

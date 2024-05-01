@@ -53,6 +53,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
            ruby-version: '3.0'
+           bundler-cache: true
 
       # Setup Ruby
 #      - uses: actions/setup-ruby@v1

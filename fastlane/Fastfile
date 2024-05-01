@@ -17,7 +17,8 @@ platform :android do
       track: "internal",
       aab: "app/build/outputs/bundle/release/app-release.aab",
       json_key_data: ENV['FASTLANE_JSON_KEY_FILE'],
-      package_name: "com.whizzarc.testapp"
+      package_name: "com.whizzarc.testapp",
+      release_status: "draft"
     )
   end
 end

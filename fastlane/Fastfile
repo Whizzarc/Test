@@ -3,7 +3,7 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Internal Build to Play Store internal track"
   lane :internal do
-  properties = File.read("key.properties").split("\n").map { |line| line.split("=") }.to_h
+  properties = File.read("app/key.properties").split("\n").map { |line| line.split("=") }.to_h
 
       # Access the properties
       key_alias = properties["keyAlias"]

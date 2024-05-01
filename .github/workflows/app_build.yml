@@ -71,8 +71,10 @@ jobs:
 
       # Run Fastlane
       - name: Run fastlane
+
         run: |
           bundle install
           bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
+          chmod +x gradlew
         env:
           FASTLANE_JSON_KEY_FILE: ${{ secrets.PLAY_STORE_CONFIG_JSON }}

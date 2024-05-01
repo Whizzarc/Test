@@ -49,35 +49,35 @@ jobs:
           KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
           KEYSTORE_STORE_PASSWORD: ${{ secrets.KEYSTORE_STORE_PASSWORD }}
 
-      - name: Install npm dependencies
-        run: |
-            yarn install
-
-      - uses: ruby/setup-ruby@v1
-        with:
-           ruby-version: '3.0.7'
-           bundler-cache: true
-
-      # Setup Ruby
-#      - uses: actions/setup-ruby@v1
-#        with:
-#          ruby-version: '2.6'
-
-      # Install Bundler
-      - name: Install Bundler
-        run: gem install bundler
-
-#      # Navigate to the app directory
-#      - name: Change directory to app and install dependencies
-#        working-directory: ./app
+#      - name: Install npm dependencies
+#        run: |
+#            yarn install
 #
-
-      # Run Fastlane
-      - name: Run fastlane
-
-        run: |
-          bundle install
-          chmod +x gradlew
-          bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
-        env:
-          FASTLANE_JSON_KEY_FILE: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
+#      - uses: ruby/setup-ruby@v1
+#        with:
+#           ruby-version: '3.0.7'
+#           bundler-cache: true
+#
+#      # Setup Ruby
+##      - uses: actions/setup-ruby@v1
+##        with:
+##          ruby-version: '2.6'
+#
+#      # Install Bundler
+#      - name: Install Bundler
+#        run: gem install bundler
+#
+##      # Navigate to the app directory
+##      - name: Change directory to app and install dependencies
+##        working-directory: ./app
+##
+#
+#      # Run Fastlane
+#      - name: Run fastlane
+#
+#        run: |
+#          bundle install
+#          chmod +x gradlew
+#          bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
+#        env:
+#          FASTLANE_JSON_KEY_FILE: ${{ secrets.PLAY_STORE_CONFIG_JSON }}

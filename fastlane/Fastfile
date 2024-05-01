@@ -3,18 +3,13 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Internal Build to Play Store internal track"
   lane :internal do
-    # Your lane logic here
-    # For example:
-    # sh "gradle assembleRelease"
-
-    # Assuming you have a Gradle-based project, you might want to use something like:
     gradle(
       task: "assembleRelease",
       properties: {
-        "android.injected.signing.store.file" => "path/to/your/keystore",
-        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
-        "android.injected.signing.key.alias" => "your-alias",
-        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"]
+        "android.injected.signing.store.file" => ENV["FASTLANE_JSON_KEY_FILE"],
+        "android.injected.signing.store.password" => ENV["KEYSTORE_STORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEYSTORE_KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEYSTORE_KEY_PASSWORD"]
       }
     )
 

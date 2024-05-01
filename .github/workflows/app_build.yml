@@ -59,22 +59,20 @@ jobs:
 #        with:
 #          ruby-version: '2.6'
 
-      # Install Bundler
-      - name: Install Bundler
-        run: gem install bundler
+#      # Install Bundler
+#      - name: Install Bundler
+#        run: gem install bundler
 
-      # Navigate to the app directory
-      - name: Change directory to app and install dependencies
-        working-directory: ./app
-        run: |
-            bundle install
+#      # Navigate to the app directory
+#      - name: Change directory to app and install dependencies
+#        working-directory: ./app
+#
 
       # Run Fastlane
       - name: Run fastlane
         run: |
-          echo "$PLAY_STORE_CONFIG_JSON" > app/play_store_config.json
-          cd app
           bundle install
           bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
         env:
-          PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
+          FASTLANE_JSON_KEY_FILE: ${{ secrets.PLAY_STORE_CONFIG }}
+        working-directory: YOUR_APP_DIRECTORY/android

@@ -13,6 +13,9 @@ platform :android do
         }
       )
        sh "ls -la app/build/outputs/bundle/release/"
+       sh "ls -la ../"
+       sh "ls -la ../../"
+       sh "ls -la pwd"
        sh "pwd"
 
 

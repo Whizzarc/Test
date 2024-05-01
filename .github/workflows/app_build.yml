@@ -1,18 +1,21 @@
 name: Deploy to Play Store
 
 on:
-  # Enable manual run
-  workflow_dispatch:
-    inputs:
-      lane:
-        description: "Fastlane lane"
-        required: true
-        default: "internal"
-        type: choice
-        options:
-          - beta
-          - promote_to_production
-          - internal
+#  # Enable manual run
+#  workflow_dispatch:
+#    inputs:
+#      lane:
+#        description: "Fastlane lane"
+#        required: true
+#        default: "internal"
+#        type: choice
+#        options:
+#          - beta
+#          - promote_to_production
+#          - internal
+  push:
+    branches:
+      - master
 
 # Declare default permissions as read-only.
 permissions: read-all
